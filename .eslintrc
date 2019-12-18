@@ -25,7 +25,6 @@
     "expect": true,
     "helpers": true
   },
-  "extends": "airbnb",
   "rules": {
     "quotes": [2, "single"],
     "max-len": [2, {"code": 160, "tabWidth": 2}],

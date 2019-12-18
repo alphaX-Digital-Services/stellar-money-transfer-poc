@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^6.7.2",
+    "git-pre-commit": "^2.1.4",
     "nodemon": "^2.0.2"
   }
 }
