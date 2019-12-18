@@ -1,0 +1,20 @@
+version: "3"
+services:
+  api:
+    build: ../../.
+    hostname: dev-api
+    restart: always
+    ports:
+      - 80
+    env_file:
+      - ./.env
+    networks:
+      - commonDev
+      - common
+  networks:
+  common:
+    external:
+      name: common
+  commonDev:
+    external:
+      name: commonDev

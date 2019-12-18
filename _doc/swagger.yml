@@ -1,0 +1,55 @@
+swagger: '2.0'
+# the domain of the service
+host: %API_HOST%
+info:
+  title: Stellar Transfer Money API
+  description: Documentation for Stellar Transfer Money API
+  version: %API_VERSION%
+# array of all schemes that your API supports
+schemes:
+  - http
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      summary: Base route
+      description: |
+          Just a base route to check whether api works
+      tags:
+        - Main
+      responses:
+        200:
+          description: An array of mind maps
+          schema:
+            $ref: '#/definitions/Main'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  Main:
+    type: object
+    properties:
+      message:
+        type: string
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      name:
+        type: string
+  

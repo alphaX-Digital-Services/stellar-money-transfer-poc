@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    hostname: mongo
+    restart: always
+    volumes:
+      - ./datadb:/data/db
+    networks:
+      - common
+    ports:
+      - 27018:27017
+networks:
+  common:
+    external:
+      name: common
