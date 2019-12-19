@@ -27,9 +27,14 @@ const schema = new Schema({
     trim: true,
     hideJSON: true
   },
-  stripeAccountId: {
-    type: String
+  publicKey: {
+    type: String,
+    trim: true
   },
+  secretSeed: {
+    type: String,
+    trim: true
+  }
 },
 {
   versionKey: false,
