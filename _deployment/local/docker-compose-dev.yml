@@ -26,9 +26,9 @@ services:
     depends_on:
       - api
   mongo:
-    image: mongo
+    image: mongo:4.0-xenial
     ports:
-      - 27018:27017
+      - 27017:27017
     restart: always
     volumes:
       - ./datadb:/data/db
