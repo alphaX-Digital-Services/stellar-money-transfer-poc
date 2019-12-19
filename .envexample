@@ -1,0 +1,17 @@
+SEND_EMAIL=on
+PRODUCT_NAME=stellarMoneyTransfer
+DEBUG=app*
+NODE_LOG=on
+NODE_HOST=0.0.0.0
+NODE_FRONT_HOST=stellar-transfer-money
+NODE_FRONT_PROTOCOL=https
+VIRTUAL_HOST=stellar-transfer-money
+LETSENCRYPT_HOST=stellar-transfer-money
+LETSENCRYPT_EMAIL=dima.iv@room4.team
+NODE_PORT=3000
+NODE_PROTOCOL=http
+DATABASE=mongodb://mongo:27017/stellarTransferMoney
+TOKEN_SECRET=djiHGUDhsdl-djsiu323NDS-IDSIYS8u9djhewjBjs
+TOKEN_REFRESH_SECRET=CvERS982AH8yMcKz-3qCR2vbc3WeatddD-bvgqWGwZchC849TE
+UUID_NAMESPACE=6e386249-e69e-51e6-a141-48cf0f701fde
+DOCKER_ENV=local
