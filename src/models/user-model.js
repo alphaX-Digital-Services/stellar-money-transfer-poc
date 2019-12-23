@@ -15,6 +15,7 @@ const schema = new Schema({
     required: true,
     trim: true,
     unique: true,
+    lowercase: true,
     validate: {
       isAsync: true,
       validator: validator.isEmail,
