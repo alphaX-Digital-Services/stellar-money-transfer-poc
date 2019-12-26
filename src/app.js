@@ -15,6 +15,7 @@ const errorLogger = require('./middleware/error-logger');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const stellarPayment = require('./routes/stellar-payment');
+const changeTrust = require('./routes/changeTrust');
 
 const app = express();
 mongoose.connect(getEnv('database'),  {
@@ -37,7 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/stellar', stellarPayment);
+app.use('/stellar/payments', stellarPayment);
+app.use('/stellar/trust', changeTrust);
 
 app.use(errorLogger());
 app.use(function(req, res, next) {
