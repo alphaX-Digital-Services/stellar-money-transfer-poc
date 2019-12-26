@@ -1,13 +1,13 @@
 const express = require('express');
 const createError = require('http-errors');
 const error = require('debug')('error:register');
-// const info = require('debug')('info:register');
 const asyncHandler = require('express-async-handler');
-// const User = require('./../models/user-model');
-
+const User = require('./../models/user-model');
+const Anchor = require('./../models/anchor-model');
+const pathPayment = require('./../helpers/utils/pathPayment');
 const router = express.Router();
-router.post('/payments', asyncHandler(async (req, res) => {
-  console.log('In route stellar payment!!!!!!!!!!!!!');
+// User can send one currency to another user and he will receive the amount of another currency in equivalent
+router.post('/pathPayment', asyncHandler(async (req, res) => {
   const { fromUser, toUser, sendAnchor, destAnchor, destAmount, sendMax } = req.body;
   if (!fromUser) throw createError(400, 'User sender is required.');
   if (!toUser) throw createError(400, 'User recipient is required');
@@ -17,14 +17,16 @@ router.post('/payments', asyncHandler(async (req, res) => {
   if (!sendMax) throw createError(400, 'Max limit for spend is required');
 
   try {
-    // todo call util
+    const fromUserDB = await User.findOne({email: req.body.fromUser});
+    const toUserDB = await User.findOne({email: req.body.toUser});
+    const sendAnchorDB = await Anchor.findOne({assetCode: req.body.sendAnchor});
+    const destAnchorDB = await Anchor.findOne({assetCode: req.body.destAnchor});
+    const response = await pathPayment(fromUserDB, toUserDB, sendAnchorDB, destAnchorDB, destAmount, sendMax);
+    res.send({ 'transaction href': response._links.transaction.href });
   } catch (err) {
     error(err);
     throw err;
   }
-
-  res.send({ result: true });
-  
 }));
 
 module.exports = router;
