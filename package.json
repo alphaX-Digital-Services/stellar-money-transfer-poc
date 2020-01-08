@@ -7,7 +7,7 @@
     "lint": "eslint --ignore-path .gitignore ./",
     "lint:fix": "eslint --fix --ignore-path .gitignore ./",
     "start": "node ./src",
-    "start:dev": "nodemon ./src --exec 'DEBUG=app* NODE_LOG=on npm start src/' -w ./src"
+    "start:dev": "nodemon ./src --exec 'DEBUG=app:* NODE_LOG=on npm start src/' -w ./src"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

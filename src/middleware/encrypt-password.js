@@ -1,5 +1,5 @@
 const passwordHelper = require('./../helpers/password');
-const error = require('debug')('error:encrypt-password');
+const error = require('debug')('app:error:encrypt-password');
 
 module.exports = async (req, res, next) => {
   const { password } = req.body;
